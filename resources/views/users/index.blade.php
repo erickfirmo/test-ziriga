@@ -21,16 +21,13 @@
             <tr>
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
-
                 <td>{{$user->email}}</td>
-                <td>{{$user->created_at}}</td>
-
-                <td>{{$user->created_at}}</td>
+                <td>{{$user->formatedDate()}}</td>
                 <td>
-                    <a href="{{route('users.show', $user->id)}}">
+                    <a href="{{route('users.show', $user->id)}}" class="btn btn-primary" role="button">
                         Editar
                     </a>
-                    <a href="{{route('users.destroy', $user->id)}}">
+                    <a href="{{route('users.destroy', $user->id)}}" class="btn btn-danger" role="button">
                         Excluir
                     </a>
                 </td>
