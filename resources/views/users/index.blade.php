@@ -6,7 +6,7 @@
             Criar Usuário
         </a>
     </div>
-    <table class="table">
+    <table class="table yajra-datatable">
         <thead>
             <tr>
                 <th>#</th>
@@ -17,31 +17,37 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($users as $user)
-            <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->formatedDate()}}</td>
-                <td>
-                    <a href="{{route('users.show', $user->id)}}" class="btn btn-primary" role="button">
-                        Editar
-                    </a>
-                    <a href="{{route('users.destroy', $user->id)}}" class="btn btn-danger" role="button">
-                        Excluir
-                    </a>
-                </td>
-            </tr>
-            @empty
-                <tr>
-                    <td collspan="3">
-                        <h2>Nenhum usuário encontrado</h2>
-                    </td>
-                </tr>
-            @endforelse
         </tbody>
     </table>
 
-    {{ $users->links() }}
+
+@push('js')
+
+<script type="text/javascript">
+  $(function () {
+    
+    var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('users.list') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'created_at', name: 'created_at'},
+            {
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+        ]
+    });
+    
+  });
+</script>
+
+
+@endpush
 
 @endsection
