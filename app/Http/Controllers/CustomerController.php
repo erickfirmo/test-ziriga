@@ -81,7 +81,14 @@ class CustomerController extends Controller
         
         try {
 
-            ## validated
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'email' => 'required|max:255|unique:cutomers',
+                'dob' => 'nullable|digits:10',
+                #'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+                'password' => 'required|confirmed|min:6',
+                'password_confirmation' => 'min:6',
+            ]);
 
             $data = $request->all();
 
