@@ -31,17 +31,17 @@ function submitAction(a) {
     if (accepted_methods.includes(method))
     {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Tem certeza?',
+            text: "Esta ação não pode ser desfeita!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Sim, deletar',
+            cancelButtonText: 'Cancelar'
+
         }).then((result) => {
             if (result.isConfirmed) {
-                
-
                 $.ajax({
                     type: "POST",
                     url: url,
