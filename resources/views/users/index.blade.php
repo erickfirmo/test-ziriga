@@ -33,7 +33,7 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
-            {data: 'created_at', name: 'created_at'},
+            {data: 'date', name: 'date'},
             {
                 data: 'action', 
                 name: 'action', 
