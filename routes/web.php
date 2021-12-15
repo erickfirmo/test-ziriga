@@ -13,14 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 
+Route::get('users_list', [App\Http\Controllers\UserController::class, 'list'])->name('users.list');
 
