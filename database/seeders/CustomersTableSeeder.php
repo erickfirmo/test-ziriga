@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class CustomersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,18 +14,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('customers')->insert([
             'name' => 'Érick Firmo',
             'email' => 'erickfirmo1996@gmail.com',
             'password' => bcrypt('password'),
+            'dob' => '18/08/1996',
         ]);
 
-        DB::table('users')->insert([
+        DB::table('customers')->insert([
             'name' => 'Ziriga User',
             'email' => 'ziriga.user@gmail.com',
             'password' => bcrypt('password'),
+            'dob' => '01/01/1985',
         ]);
 
-        \App\Models\User::factory(100)->create();
+        \App\Models\Customer::factory(100)->create();
     }
 }
