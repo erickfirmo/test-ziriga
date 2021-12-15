@@ -78,7 +78,26 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try {
+
+            ## validated
+
+            $data = $request->all();
+
+            $model = $this->customer->create($data);
+
+            return response()->json($model, 200);
+            
+        } catch (\Exception $e) {
+            if(env('APP_DEBUG'))
+            {
+                return response($e->getMessage(), 500)
+                    ->header('Content-Type', 'text/plain');
+            }
+            return response('Ocorreu um erro ao criar usuário!', 500)
+                    ->header('Content-Type', 'text/plain');
+        }
     }
 
     /**
@@ -98,9 +117,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($customer)
     {
-        //
+        return view('customers.edit', compact('customer'));
     }
 
     /**
