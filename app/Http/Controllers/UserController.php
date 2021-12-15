@@ -51,6 +51,10 @@ class UserController extends Controller
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">Editar</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Excluir</a>';
                     return $actionBtn;
                 })
+                ->addColumn('date', function($row) {
+                    $formatedDate = $row->formatedDate();
+                    return $formatedDate;
+                })
                 ->rawColumns(['action'])
                 ->make(true);
         }
