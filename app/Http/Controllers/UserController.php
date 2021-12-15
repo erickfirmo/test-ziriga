@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = $this->user->orderBy('id', 'desc')->paginate(30);
+
+        return view('users.index', compact('users'));
     }
 
     /**
