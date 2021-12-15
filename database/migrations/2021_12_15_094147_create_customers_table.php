@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('name', 255);
             $table->string('email', 255)->unique();
             $table->string('password', 255);
-            $table->string('dob', 10);
+            $table->string('dob', 10)->nullable();
             $table->timestamps();
         });
 
