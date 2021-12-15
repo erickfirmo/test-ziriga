@@ -5,21 +5,20 @@
         <a href="{{route('users.create')}}" class="btn btn-lg btn-success mb-4">
             Criar Usuário
         </a>
+        <table class="table yajra-datatable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
-    <table class="table yajra-datatable">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Criado em</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
 
 @push('js')
 
