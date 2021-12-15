@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Route::resource('users', App\Http\Controllers\CustomerController::class);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('users', App\Http\Controllers\UserController::class);
-
-Route::get('users_list', [App\Http\Controllers\UserController::class, 'list'])->name('users.list');
+Route::get('users_list', [App\Http\Controllers\CustomerController::class, 'list'])->name('users.list');
 
