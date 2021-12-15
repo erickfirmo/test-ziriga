@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Customer;
 use DataTables;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
-    private $user;
+    private $customer;
 
-    public function __construct(User $user)
+    public function __construct(Customer $customer)
     {
-        $this->user = $user;
+        $this->customer = $customer;
     }
 
     /**
@@ -22,13 +22,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->exists();
+        $customers = $this->customer->exists();
 
-        if (!$users) {
+        if (!$customers) {
             return redirect()->route('users.create');
         }
 
-        return view('users.index');
+        return view('customers.index');
     }
 
     /**
@@ -43,7 +43,7 @@ class UserController extends Controller
             return redirect()->route('users.index');
 
         } else {
-            $data = $this->user->get();
+            $data = $this->customer->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -67,7 +67,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('customers.create');
     }
 
     /**
