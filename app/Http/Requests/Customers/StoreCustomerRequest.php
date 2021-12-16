@@ -5,9 +5,15 @@ namespace App\Http\Requests\Customers;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
 
 class StoreCustomerRequest extends FormRequest
 {
+
+    protected $forceJsonResponse = true;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -30,7 +36,7 @@ class StoreCustomerRequest extends FormRequest
             'email' => 'required|max:255|unique:customers,email',
             'dob' => 'nullable|date',
             //'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password' => 'required',
+            'password' => 'required|confirmed',
             'password_confirmation' => 'min:6',
         ];
     }
@@ -60,8 +66,25 @@ class StoreCustomerRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Nome é um campo obrigatório',
-            'email.required' => 'E-mail é um campo obrigatório',
+            // name
+            'name.required' => 'O nome é obrigatório.',
+            'name.max' => 'O nome deve ter no máximo :max caracteres.',
+            'name.min' => 'O nome deve ter no mínimo :min caracteres.',
+            // email
+            'email.required' => 'O e-mail é obrigatório.',
+            'email.email' => 'O e-mail é inválido.',
+            'email.max' => 'O e-mail deve ter no máximo :max caracteres.',
+            'email.min' => 'O e-mail deve ter no mínimo :min caracteres.',
+            'email.unique' => 'O e-mail já está em uso.',
+            // dob
+            'dob.date' => 'A data de nascimento não é uma data válida.',
+            // password
+            'password.required' => 'A senha é obrigatória.',
+            'password.max' => 'O e-mail deve ter no máximo :max caracteres.',
+            'password.min' => 'O e-mail deve ter no mínimo :min caracteres.',
+            'password_confirmation.max' => 'A confirmação de senha deve ter no máximo :max caracteres.',
+            'password_confirmation.min' => 'A confirmação deve ter no máximo :max caracteres.',
+            'password.confirmed' => 'A confirmação de senha não corresponde.'
         ];
     }
     
