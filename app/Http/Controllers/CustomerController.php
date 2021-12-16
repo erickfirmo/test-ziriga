@@ -28,7 +28,7 @@ class CustomerController extends Controller
         $customers = $this->customer->exists();
 
         if (!$customers) {
-            return redirect()->route('users.create');
+            return redirect()->route('customers.create');
         }
 
         return view('customers.index');
@@ -43,7 +43,7 @@ class CustomerController extends Controller
     {
         if (!$request->ajax()) {
 
-            return redirect()->route('users.index');
+            return redirect()->route('customers.index');
 
         } else {
             $data = $this->customer->get();
@@ -51,7 +51,7 @@ class CustomerController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('users.edit', $row->id).'" class="edit btn btn-info btn-sm"><i class="fas fa-edit"></i>&nbsp;Editar</a> <button href="javascript:void(0)" onclick="submitAction(this)" data-method="DELETE" data-url="'.route('users.destroy', $row->id).'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;Excluir</a>';
+                    $actionBtn = '<a href="'.route('customers.edit', $row->id).'" class="edit btn btn-info btn-sm"><i class="fas fa-edit"></i>&nbsp;Editar</a> <button href="javascript:void(0)" onclick="submitAction(this)" data-method="DELETE" data-url="'.route('customers.destroy', $row->id).'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;Excluir</a>';
                     return $actionBtn;
                 })
                 ->addColumn('date', function($row) {
@@ -113,7 +113,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('users.edit', $id);
+        return redirect()->route('customers.edit', $id);
     }
 
     /**
