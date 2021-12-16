@@ -36,8 +36,8 @@
 
         </div>
     </div>
+    <a href="{{ route('users.index') }}" type="button" class="btn btn-lg btn-light">Cancelar</a>
     <button type="submit" class="btn btn-lg btn-success">Salvar</button>
-    <button type="submit" class="btn btn-lg btn-light">Cancelar</button>
 </form>
 
 @push('js')
