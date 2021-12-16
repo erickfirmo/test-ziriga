@@ -133,9 +133,30 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerRequest $request, $id)
     {
-        //
+        try {
+            $data = $request->validated();
+
+            $customer = $this->customer->findOrFail($id);
+            
+            $customer->update($data);
+
+            Session::flash('success', 'Usuário atualizado com sucesso!');
+
+            return response()->json($response, 200)
+                ->header('Content-Type', 'application/json');
+
+        } catch (\Exception $e) {
+            if (env('APP_DEBUG'))
+            {
+                return response()->json(['message' => $e->getMessage()], 500)
+                    >header('Content-Type', 'application/json');
+            }
+
+            return response()->json(['message' => 'Ocorreu um erro ao atualizar usuário'], 500)
+                ->header('Content-Type', 'application/json');
+        }
     }
 
     /**
