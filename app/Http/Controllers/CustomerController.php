@@ -112,7 +112,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        // only other, this not
+        return redirect()->route('users.edit', compact($id));
     }
 
     /**
@@ -121,8 +121,19 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($customer)
+    public function edit($id)
     {
+        try {
+            $customer = $this->customer->findOrFail($id);
+        } catch (\Exception $e) {
+            if(env('APP_DEBUG')) {
+                Session::flash('error', $e->getMessage());
+                return redirect()->back();
+            }
+            Session::flash('error', 'Usuário não encontrado!');
+            return redirect()->back();
+        }
+
         return view('customers.edit', compact('customer'));
     }
 
