@@ -30,31 +30,17 @@
             success: function(data)
             {
                 let url = '/users/'+data.id+'/edit';
-
                 window.location.href = url;
-
-                // edit -> show session value (flash)
-                /*Swal.fire(
-                    'Sucesso!',
-                    'Usuário cadastrado com sucesso!',
-                    'success'
-                )*/
             },
             error: function (data) {
                 // verify if has validation errors
                 if (data.status == 422) {
                     let errors = JSON.parse(data.responseText);
 
-                    console.log(errors);
-
                     for (let field in errors) {
-                        console.log(field + ": "+ errors[field]);
-
                         $('#'+field+'-error').text(errors[field]);
                         $('#'+field).addClass('border-danger');
-
                         $('#'+field+'-error').removeClass('d-none');
-
                     }
                     
                 } else {
@@ -68,12 +54,6 @@
         });
     })
 
-    // remove message error from invalid fields on change
-    $('input').on('change', function() {
-        $(this).removeClass('border-danger');
-        $(this).parent().find('.form-txt-danger').text('');
-        $(this).parent().find('.form-txt-danger').addClass('d-none');
-    });
 
 </script>
 @endpush
