@@ -95,4 +95,13 @@
 
 @stack('js')
 
+<script>
+    // remove message error from invalid fields on change
+    $('input.custom-validator').on('change', function() {
+        $(this).removeClass('border-danger');
+        $(this).parent().find('.form-txt-danger').text('');
+        $(this).parent().find('.form-txt-danger').addClass('d-none');
+    });
+</script>
+
 </html>
