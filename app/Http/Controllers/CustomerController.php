@@ -113,7 +113,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('users.edit', compact($id));
+        return redirect()->route('users.edit', $id);
     }
 
     /**
