@@ -26,8 +26,8 @@ class StoreCustomerRequest extends CustomerRequest
             'email' => 'required|max:255|unique:customers,email',
             'dob' => 'nullable|date',
             //'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required|min:6',
+            'password' => 'required|confirmed|min:8',
+            'password_confirmation' => 'required|min:8',
         ];
     }
 }
