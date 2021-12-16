@@ -51,7 +51,7 @@ class CustomerController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('users.edit', $row->id).'" class="edit btn btn-info btn-sm">Editar</a> <button href="javascript:void(0)" onclick="submitAction(this)" data-method="DELETE" data-url="'.route('users.destroy', $row->id).'" class="delete btn btn-danger btn-sm">Excluir</a>';
+                    $actionBtn = '<a href="'.route('users.edit', $row->id).'" class="edit btn btn-info btn-sm"><i class="fas fa-edit"></i>&nbsp;Editar</a> <button href="javascript:void(0)" onclick="submitAction(this)" data-method="DELETE" data-url="'.route('users.destroy', $row->id).'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>&nbsp;Excluir</a>';
                     return $actionBtn;
                 })
                 ->addColumn('date', function($row) {
