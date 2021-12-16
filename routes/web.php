@@ -14,10 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {
-    return redirect()->route('users.index');
+    return redirect()->route('customers.index');
 });
 
-Route::resource('users', App\Http\Controllers\CustomerController::class);
+Route::resource('usuarios', App\Http\Controllers\CustomerController::class, [
+    'names' => [
+        'index' => 'customers.index',
+        'create' => 'customers.create',
+        'edit' => 'customers.edit',
+        'update' => 'customers.update',
+        'destroy' => 'customers.destroy',
+        'store' => 'customers.store',
+        'show' => 'customers.show',
+    ]
+]);
 
-Route::get('users_list', [App\Http\Controllers\CustomerController::class, 'list'])->name('users.list');
+Route::get('customers_list', [App\Http\Controllers\CustomerController::class, 'list'])->name('customers.list');
 
