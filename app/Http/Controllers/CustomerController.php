@@ -139,7 +139,7 @@ class CustomerController extends Controller
             $data = $request->validated();
 
             $customer = $this->customer->findOrFail($id);
-            
+
             $customer->update($data);
 
             Session::flash('success', 'Usuário atualizado com sucesso!');
@@ -172,15 +172,15 @@ class CustomerController extends Controller
             $customer->delete();
 
             return response('Usuário deletado com sucesso!', 200)
-                    ->header('Content-Type', 'text/plain');
+                ->header('Content-Type', 'application/json');
 
         } catch (\Exception $e) {
             if(env('APP_DEBUG')) {
                 return response($e->getMessage(), 500)
-                    ->header('Content-Type', 'text/plain');
+                    ->header('Content-Type', 'application/json');
             }
             return response('Ocorreu um erro ao deletar usuário!', 500)
-                    ->header('Content-Type', 'text/plain');
+                ->header('Content-Type', 'application/json');
         }
     }
 }
