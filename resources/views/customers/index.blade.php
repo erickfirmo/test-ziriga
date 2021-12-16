@@ -5,8 +5,8 @@
 <h3>Lista de Usuários</h3>
 <hr>
     <div class="col-12">
-        <a href="{{route('users.create')}}" class="btn btn-lg btn-primary mb-4">
-            Criar Usuário
+        <a href="{{route('customers.create')}}" class="btn btn-primary mb-4">
+            <i class="fas fa-plus"></i>&nbsp;&nbsp;Novo Usuário
         </a>
         <table class="table yajra-datatable">
             <thead>
@@ -71,7 +71,7 @@ function submitAction(a) {
 var table = $('.yajra-datatable').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "{{ route('users.list') }}",
+    ajax: "{{ route('customers.list') }}",
     columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},

@@ -5,7 +5,7 @@
 <h3>Cadastrar Usuário</h3>
 <hr>
 
-{!! Form::open(['url' => route('users.store'), 'method' => 'post']) !!}
+{!! Form::open(['url' => route('customers.store'), 'method' => 'post']) !!}
 
 @include('customers.partials.form')
 
@@ -32,7 +32,7 @@
             //contentType: "application/json",
             success: function(data)
             {
-                let url = '/users/'+data.id+'/edit';
+                let url = '/customers/'+data.id+'/edit';
                 window.location.href = url;
             },
             error: function (data) {

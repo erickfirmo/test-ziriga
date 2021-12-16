@@ -39,8 +39,8 @@
 
 </div>
 
-<button type="submit" class="btn btn-primary">{{ !isset($customer) ? 'Salvar' : 'Atualizar' }}</button>
-<a href="{{ route('users.index') }}" type="button" class="btn btn-light">Cancelar</a>
+<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;{{ !isset($customer) ? 'Salvar' : 'Atualizar' }}</button>
+<a href="{{ route('customers.index') }}" type="button" class="btn btn-light"><i class="fas fa-arrow-left"></i>&nbsp;Cancelar</a>
 
 
 {!! Form::close() !!}
