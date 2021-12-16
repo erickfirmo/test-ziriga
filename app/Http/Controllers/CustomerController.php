@@ -6,6 +6,7 @@ use App\Http\Requests\Customers\StoreCustomerRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use DataTables;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -85,6 +86,8 @@ class CustomerController extends Controller
 
             $response = $this->customer->create($data);
 
+            Session::flash('success', 'Usuário criado com sucesso!');
+
             return response()->json($response, 200)
                 ->header('Content-Type', 'application/json');
 
@@ -109,7 +112,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        // only other, this not
     }
 
     /**
