@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+<h3>Lista de Usuários</h3>
+<hr>
     <div class="col-12">
-        <a href="{{route('users.create')}}" class="btn btn-lg btn-success mb-4">
+        <a href="{{route('users.create')}}" class="btn btn-lg btn-primary mb-4">
             Criar Usuário
         </a>
         <table class="table yajra-datatable">
