@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Customers\StoreCustomerRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use DataTables;
@@ -73,37 +74,30 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Customers\StoreCustomerRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        
         try {
 
-            $validated = $request->validate([
-                'name' => 'required|max:255',
-                'email' => 'required|max:255|unique:cutomers',
-                'dob' => 'nullable|digits:10',
-                #'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-                'password' => 'required|confirmed|min:6',
-                'password_confirmation' => 'min:6',
-            ]);
+            $data = $request->validated();
 
-            $data = $request->all();
+            $response = $this->customer->create($data);
 
-            $model = $this->customer->create($data);
+            return response()->json($response, 200)
+                ->header('Content-Type', 'application/json');
 
-            return response()->json($model, 200);
             
         } catch (\Exception $e) {
-            if(env('APP_DEBUG'))
+            if (env('APP_DEBUG'))
             {
-                return response($e->getMessage(), 500)
-                    ->header('Content-Type', 'text/plain');
+                return response()->json(['message' => $e->getMessage()], 500)
+                    >header('Content-Type', 'application/json');
             }
-            return response('Ocorreu um erro ao criar usuário!', 500)
-                    ->header('Content-Type', 'text/plain');
+
+            return response()->json(['message' => 'Ocorreu um erro ao criar usuário'], 500)
+                ->header('Content-Type', 'application/json');
         }
     }
 
