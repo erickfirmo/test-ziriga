@@ -23,7 +23,7 @@ class UpdateCustomerRequest extends CustomerRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|max:255|unique:customers,email,'.$this->route('user'),
+            'email' => 'required|max:255|unique:customers,email,'.$this->route('usuario'),
             'dob' => 'nullable|date',
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required|min:8',
