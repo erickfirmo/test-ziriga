@@ -8,22 +8,32 @@
         <div class="form-group mb-3 col-4">
             <label for="name">Nome</label>
             <input type="text" class="form-control" name="name" id="name">
+            <div id="name-error" class="col-form-label form-txt-danger d-none"></div>
+
         </div>
         <div class="form-group mb-3 col-4">
             <label for="email">E-mail</label>
             <input type="email" class="form-control" name="email" id="email">
+            <div id="email-error" class="col-form-label form-txt-danger d-none"></div>
+
         </div>
         <div class="form-group mb-3 col-4">
             <label for="dob">Data de Nascimento</label>
             <input type="date" class="form-control" name="dob" id="dob">
+            <div id="dob-error" class="col-form-label form-txt-danger d-none"></div>
+
         </div>
         <div class="form-group mb-3 col-6">
             <label for="password">Senha</label>
             <input type="password" class="form-control" name="password" id="password">
+            <div id="password-error" class="col-form-label form-txt-danger d-none"></div>
+
         </div>
         <div class="form-group mb-3 col-6">
             <label for="password_confirmation">Confirmar Senha</label>
             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+            <div id="password_confirmation-error" class="col-form-label form-txt-danger d-none"></div>
+
         </div>
     </div>
     <button type="submit" class="btn btn-lg btn-success">Salvar</button>
@@ -70,6 +80,16 @@
                     let errors = JSON.parse(data.responseText);
 
                     console.log(errors);
+
+                    for (let field in errors) {
+                        console.log(field + ": "+ errors[field]);
+
+                        $('#'+field+'-error').text(errors[field]);
+                        $('#'+field).addClass('border-danger');
+
+                        $('#'+field+'-error').removeClass('d-none');
+
+                    }
                     
                 } else {
                     Swal.fire({
@@ -81,6 +101,14 @@
             },
         });
     })
+
+    // remove message error from invalid fields on change
+    $('input').on('change', function() {
+        $(this).removeClass('border-danger');
+        $(this).parent().find('.form-txt-danger').text('');
+        $(this).parent().find('.form-txt-danger').addClass('d-none');
+    });
+
 </script>
 @endpush
 @endsection
