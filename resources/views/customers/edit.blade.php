@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>Cadastrar Usuário</h3>
+<h3>Editar Usuário</h3>
 <hr>
 
 {!! Form::model($customer, ['route' => ['customers.update', $customer->id], 'method' => 'PUT']) !!}
