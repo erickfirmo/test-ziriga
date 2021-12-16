@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Customers\StoreCustomerRequest;
-use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Http\Requests\Customers\StoreCustomerRequest;
+use App\Http\Requests\Customers\UpdateCustomerRequest;
 use DataTables;
 use Session;
 
@@ -155,7 +156,7 @@ class CustomerController extends Controller
 
             Session::flash('success', 'Usuário atualizado com sucesso!');
 
-            return response()->json($response, 200)
+            return response()->json($customer, 200)
                 ->header('Content-Type', 'application/json');
 
         } catch (\Exception $e) {
