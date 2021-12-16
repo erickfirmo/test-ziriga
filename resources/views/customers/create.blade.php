@@ -2,6 +2,9 @@
 
 @section('content')
 
+<h3>Cadastrar Usuário</h3>
+<hr>
+
 {!! Form::open(['url' => route('users.store'), 'method' => 'post']) !!}
 
 @include('customers.partials.form')
