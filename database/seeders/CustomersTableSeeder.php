@@ -22,7 +22,7 @@ class CustomersTableSeeder extends Seeder
         ]);
 
         DB::table('customers')->insert([
-            'name' => 'Ziriga User',
+            'name' => 'Zíriga User',
             'email' => 'ziriga.user@gmail.com',
             'password' => bcrypt('password'),
             'dob' => '01/01/1985',
