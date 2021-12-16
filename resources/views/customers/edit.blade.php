@@ -4,6 +4,8 @@
 
 {!! Form::model($customer, ['route' => ['users.update', $customer->id], 'method' => 'PUT']) !!}
 
+@method('PUT')
+
 @include('customers.partials.form')
 
 @push('js')
@@ -16,6 +18,7 @@
         let url = $(this).attr('action');
         var formData = {
             _token: "{{ csrf_token() }}",
+            _method: $("input[name='_method']").val(),
             name: $("#name").val(),
             email: $("#email").val(),
             date: $("#dob").val(),
