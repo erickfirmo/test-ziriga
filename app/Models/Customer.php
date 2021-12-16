@@ -10,6 +10,7 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $table = 'customers';
     /**
      * The attributes that are mass assignable.
      *
