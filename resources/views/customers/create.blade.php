@@ -2,43 +2,9 @@
 
 @section('content')
 
-<form action="{{route('users.store')}}" method="post">
-    <div class="row">
-        @csrf
-        <div class="form-group mb-3 col-4">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" name="name" id="name">
-            <div id="name-error" class="col-form-label form-txt-danger d-none"></div>
+{!! Form::open(['url' => route('users.store'), 'method' => 'post']) !!}
 
-        </div>
-        <div class="form-group mb-3 col-4">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" name="email" id="email">
-            <div id="email-error" class="col-form-label form-txt-danger d-none"></div>
-
-        </div>
-        <div class="form-group mb-3 col-4">
-            <label for="dob">Data de Nascimento</label>
-            <input type="date" class="form-control" name="dob" id="dob">
-            <div id="dob-error" class="col-form-label form-txt-danger d-none"></div>
-
-        </div>
-        <div class="form-group mb-3 col-6">
-            <label for="password">Senha</label>
-            <input type="password" class="form-control" name="password" id="password">
-            <div id="password-error" class="col-form-label form-txt-danger d-none"></div>
-
-        </div>
-        <div class="form-group mb-3 col-6">
-            <label for="password_confirmation">Confirmar Senha</label>
-            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
-            <div id="password_confirmation-error" class="col-form-label form-txt-danger d-none"></div>
-
-        </div>
-    </div>
-    <a href="{{ route('users.index') }}" type="button" class="btn btn-lg btn-light">Cancelar</a>
-    <button type="submit" class="btn btn-lg btn-success">Salvar</button>
-</form>
+@include('customers.partials.form')
 
 @push('js')
 <script>
