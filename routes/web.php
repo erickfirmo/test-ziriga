@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return redirect()->route('users.index');
+});
+
 Route::resource('users', App\Http\Controllers\CustomerController::class);
 
 Route::get('users_list', [App\Http\Controllers\CustomerController::class, 'list'])->name('users.list');
