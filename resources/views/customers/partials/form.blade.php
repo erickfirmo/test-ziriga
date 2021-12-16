@@ -30,7 +30,7 @@
         <div id="password_confirmation-error" class="col-form-label form-txt-danger d-none"></div>
     </div>
 
-    @if($customer)
+    @if(isset($customer))
     <div class="form-group mb-3 col-4">
         {!! Form::label('created_at', 'Data de Cadastro', ['for' => 'created_at']) !!}
         {!! Form::date('created_at', $customer->created_at ?? null, ['class' => 'form-control custom-validator', 'id' => 'created_at', 'disabled' => 'disabled']) !!}
