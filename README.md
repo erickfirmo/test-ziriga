@@ -2,7 +2,7 @@
 
 # Test Zíriga - Laravel
 
-Teste de PHP/Laravel
+Teste de PHP/Laravel.
 
 ## Objetivo
 Criar um CRUD (Create, Read, Update	e Delete) de usuários em PHP utilizando	o framework Laravel	e banco	de dados MySQL.
