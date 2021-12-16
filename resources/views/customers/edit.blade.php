@@ -65,7 +65,7 @@
     })
 </script>
 
-@if(session()->exists("message"))
+@if(session()->exists("success"))
 <script>
     $(function() {
         Swal.fire(

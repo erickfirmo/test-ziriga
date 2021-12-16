@@ -32,7 +32,7 @@
             //contentType: "application/json",
             success: function(data)
             {
-                let url = '/customers/'+data.id+'/edit';
+                let url = '/usuarios/'+data.id+'/editar';
                 window.location.href = url;
             },
             error: function (data) {
